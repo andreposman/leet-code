@@ -12,5 +12,23 @@ func main() {
 
 func lengthOfLongestSubstring(s string) int {
 
-	return 0
+	var left, maxSize int
+	window := make(map[byte]bool)
+
+	for right := 0; right < len(s); right++ {
+		//? expanding loop
+		for window[s[right]] {
+			//? shrinking loop
+			delete(window, s[left])
+			left++
+
+		}
+
+		window[s[right]] = true
+		if right-left+1 > maxSize {
+			maxSize = right - left + 1
+
+		}
+	}
+	return maxSize
 }
