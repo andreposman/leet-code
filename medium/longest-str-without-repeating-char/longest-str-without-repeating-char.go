@@ -16,7 +16,7 @@ func lengthOfLongestSubstring(s string) int {
 	window := make(map[byte]bool)
 
 	for right := 0; right < len(s); right++ {
-		//! expanding loop
+		// expanding loop
 		for window[s[right]] {
 			//? shrinking loop
 			delete(window, s[left])
